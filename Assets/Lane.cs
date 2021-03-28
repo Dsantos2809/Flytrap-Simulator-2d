@@ -31,13 +31,7 @@ public class Lane : MonoBehaviour
         }
     }
 
-    void OnDestroy()
-    {
-        CreateNewEnemy();
-        Debug.Log("OnDestroy1");
-    }
-
-    private void CreateNewEnemy()
+    public void CreateNewEnemy()
     {
         GameObject childObject = Instantiate(newInsect, new Vector3(transform.position.x - 10, transform.position.y, 0), Quaternion.identity);
         childObject.transform.parent = transform;

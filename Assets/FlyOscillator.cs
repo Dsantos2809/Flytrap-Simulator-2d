@@ -11,8 +11,13 @@ public class FlyOscillator : MonoBehaviour
     public GameObject lane;
 
     float t = 0.0f;
+    float tH = 0.0f;
+
+    public GameObject plant;
 
     public SpriteRenderer sprite;
+
+    public bool isDead = false;
 
     void Start()
     {
@@ -23,12 +28,27 @@ public class FlyOscillator : MonoBehaviour
 
     void Update()
     {
-        if(gameObject.tag == "Insect")
+        if (isDead)
+        {
+            gameObject.tag = "Dead";
+        }
+        if(gameObject.tag == "Dead")
+        {
+            FlyAttractor();
+        }
+        else if(gameObject.tag == "Insect")
         {
             MoveTheFly();
-        }
-        
+        }    
     }
+
+    private void FlyAttractor()
+    {
+        transform.position = new Vector3(Mathf.Lerp(transform.position.x, plant.transform.position.x, tH), Mathf.Lerp(transform.position.y, plant.transform.position.y, tH), 0);
+        tH += speed / 1000 * Time.deltaTime;
+        Debug.Log(tH);
+    }
+
 
     private void MoveTheFly()
     {
