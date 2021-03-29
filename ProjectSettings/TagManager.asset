@@ -7,6 +7,7 @@ TagManager:
   - Insect
   - Plant
   - Dead
+  - Stopped
   layers:
   - Default
   - TransparentFX

@@ -247,9 +247,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lane 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4325326276071036323, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6419723138859061622, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6912719117577534803, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
       propertyPath: newInsect
@@ -453,9 +457,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lane 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4325326276071036323, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6419723138859061622, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6912719117577534803, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
       propertyPath: newInsect
@@ -617,9 +625,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lane 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4325326276071036323, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6419723138859061622, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6912719117577534803, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
       propertyPath: newInsect

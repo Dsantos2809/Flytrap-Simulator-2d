@@ -3,7 +3,11 @@ guid: e8a5be0a38126774e85274e7922be6d7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fly: {fileID: 4203583846868240313, guid: 07629725f0921534d9c6f3064d04ab2e, type: 3}
+  - bee: {instanceID: 0}
+  - mosquitoe: {instanceID: 0}
+  - bettle: {fileID: 886052927489484861, guid: 2a3f276bddf7fb845814238f67212411, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

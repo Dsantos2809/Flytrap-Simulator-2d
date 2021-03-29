@@ -97,6 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFree: 1
+  insects:
+  - {fileID: 4203583846868240313, guid: 07629725f0921534d9c6f3064d04ab2e, type: 3}
+  - {fileID: 3169603749592162640, guid: 123beb87a5e9df344a4da99662022834, type: 3}
+  - {fileID: 9065467613704403859, guid: b6cb53daa484ecc4e89a0afb26333b13, type: 3}
+  - {fileID: 886052927489484861, guid: 2a3f276bddf7fb845814238f67212411, type: 3}
 --- !u!61 &6419723138859061622
 BoxCollider2D:
   m_ObjectHideFlags: 0

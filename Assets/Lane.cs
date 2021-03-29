@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Lane : MonoBehaviour
 {
-    public bool isFree;
+    public bool isFree = true;
 
-    public GameObject newInsect;
+    public GameObject[] insects;
 
     void Start()
     {
-        CreateNewEnemy();
+        if (isFree)
+        {
+            CreateNewEnemy();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -18,23 +21,48 @@ public class Lane : MonoBehaviour
         if (other.gameObject.tag == "Insect")
         {
             isFree = false;
-            Debug.Log("false");
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Insect")
+        if (other.gameObject.tag == "Dead")
         {
-            isFree = true;
-            Debug.Log("true");    
+            isFree = true;  
         }
     }
 
     public void CreateNewEnemy()
     {
-        GameObject childObject = Instantiate(newInsect, new Vector3(transform.position.x - 10, transform.position.y, 0), Quaternion.identity);
+        int insect;
+        int percentage;
+        percentage = Random.Range(0, 100);
+        Debug.Log(percentage);
+
+        if(percentage <= 50)
+        {
+            insect = 0;
+            Debug.Log("fly");
+        }
+        else if(percentage <= 65)
+        {
+            insect = 1;
+            Debug.Log("bee");
+        }
+        else if(percentage <= 90)
+        {
+            insect = 2;
+            Debug.Log("mosquitoe");
+        }
+        else
+        {
+            insect = 3;
+            Debug.Log("beetle");
+        }
+
+        GameObject childObject = Instantiate(insects[insect], new Vector3(transform.position.x - 10, transform.position.y, 0), Quaternion.identity);
         childObject.transform.parent = transform;
+        childObject.GetComponent<FlyOscillator>().insect = insect + 1;
         childObject.GetComponent<FlyOscillator>().speed = Random.Range(2.0f, 5.0f);
     }    
     
