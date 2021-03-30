@@ -13,6 +13,10 @@ public class FlyOscillator : MonoBehaviour
     Vector3 startScale;
 
     float laneNumber;
+
+    public int points;
+    public float digestionTime;
+
     public GameObject lane;
 
     float t = 0.0f;

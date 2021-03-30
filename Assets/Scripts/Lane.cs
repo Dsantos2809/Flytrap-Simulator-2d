@@ -5,14 +5,20 @@ using UnityEngine;
 public class Lane : MonoBehaviour
 {
     public bool isFree = true;
+    public bool isDead = false;
 
     public GameObject[] insects;
+
+    public int insectsUnlocked = 4;
+
+    public int lanesUnlocked = 3;
 
     void Start()
     {
         if (isFree)
         {
             CreateNewEnemy();
+            isDead = false;
         }
     }
 
@@ -28,47 +34,29 @@ public class Lane : MonoBehaviour
     {
         if (other.gameObject.tag == "Dead")
         {
-            isFree = true;  
+            isFree = true;
         }
     }
 
+    //Create a new enemy based on the percentage
     public void CreateNewEnemy()
     {
         int insect;
         int percentage;
-        percentage = Random.Range(0, 100);
-        Debug.Log(percentage);
+        percentage = Random.Range(1, insectsUnlocked);
 
-        if(percentage <= 50)
-        {
-            insect = 0;
-            Debug.Log("fly");
-        }
-        else if(percentage <= 65)
-        {
-            insect = 1;
-            Debug.Log("bee");
-        }
-        else if(percentage <= 90)
-        {
-            insect = 2;
-            Debug.Log("mosquitoe");
-        }
-        else
-        {
-            insect = 3;
-            Debug.Log("beetle");
-        }
-
-        GameObject childObject = Instantiate(insects[insect], new Vector3(transform.position.x - 10, transform.position.y, 0), Quaternion.identity);
+        GameObject childObject = Instantiate(insects[percentage - 1], new Vector3(transform.position.x - 10, transform.position.y, 0), Quaternion.identity);
         childObject.transform.parent = transform;
-        childObject.GetComponent<FlyOscillator>().insect = insect + 1;
+        childObject.GetComponent<FlyOscillator>().insect = percentage;
         childObject.GetComponent<FlyOscillator>().speed = Random.Range(2.0f, 5.0f);
-    }    
-    
-    // Update is called once per frame
+    }
+
     void Update()
     {
-        
+        if (isDead)
+        {
+            CreateNewEnemy();
+            isDead = false;
+        }
     }
 }

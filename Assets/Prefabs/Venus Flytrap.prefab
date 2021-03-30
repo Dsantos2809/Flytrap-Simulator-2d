@@ -122,3 +122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fde09067ca66804daf7807cc9cd7f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statePlant: 0
+  plant: {fileID: 5327946110370610909}
+  lane: {fileID: 0}
+  timeToEat: 5
+  totalPoints: 0
+  timeToDigest: 0

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8816823805398910873
+--- !u!1 &3481478959126723987
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1448372557333718649}
-  - component: {fileID: 6990853084821197345}
+  - component: {fileID: 245762327196136729}
+  - component: {fileID: 7404700809202414409}
   m_Layer: 0
   m_Name: Aura
   m_TagString: Untagged
@@ -17,27 +17,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!4 &1448372557333718649
+--- !u!4 &245762327196136729
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8816823805398910873}
+  m_GameObject: {fileID: 3481478959126723987}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
-  m_Father: {fileID: 7771471689137008832}
+  m_Father: {fileID: 4203583846868240292}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6990853084821197345
+--- !u!212 &7404700809202414409
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8816823805398910873}
+  m_GameObject: {fileID: 3481478959126723987}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &9065467613704403859
+--- !u!1 &4203583846868240313
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,40 +90,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7771471689137008832}
-  - component: {fileID: 25020184895730690}
-  - component: {fileID: 7386700915862944157}
-  - component: {fileID: 6584425765534875835}
-  - component: {fileID: 4890182762332773261}
+  - component: {fileID: 4203583846868240292}
+  - component: {fileID: 4203583846868240295}
+  - component: {fileID: 4203583846868240294}
+  - component: {fileID: 1678827077262670554}
+  - component: {fileID: 8594229699722419909}
   m_Layer: 0
-  m_Name: Mosquitoe
+  m_Name: Fly
   m_TagString: Insect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7771471689137008832
+--- !u!4 &4203583846868240292
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9065467613704403859}
+  m_GameObject: {fileID: 4203583846868240313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.03225442, y: 0.038052063, z: 1}
+  m_LocalScale: {x: 0.08072654, y: 0.088975996, z: 1}
   m_Children:
-  - {fileID: 1448372557333718649}
+  - {fileID: 245762327196136729}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &25020184895730690
+--- !u!212 &4203583846868240295
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9065467613704403859}
+  m_GameObject: {fileID: 4203583846868240313}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -168,13 +168,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7386700915862944157
+--- !u!114 &4203583846868240294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9065467613704403859}
+  m_GameObject: {fileID: 4203583846868240313}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7fc901b68461c264fb9cec1622c2f511, type: 3}
@@ -182,43 +182,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   insect: 0
-  lane: {fileID: 0}
+  points: 10
+  digestionTime: 5
+  lane: {fileID: 4325326276071036323, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
   plant: {fileID: 5327946110370610909, guid: 09069e54a187a1046a1597bfbbc8e4c8, type: 3}
-  timeForKill: 1
---- !u!61 &6584425765534875835
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9065467613704403859}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.40308762, y: -0.15268707}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.4, y: 12.8}
-    newSize: {x: 12.4, y: 12.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 27.577866, y: 23.021496}
-  m_EdgeRadius: 0
---- !u!50 &4890182762332773261
+  timeForKill: 2
+--- !u!50 &1678827077262670554
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9065467613704403859}
+  m_GameObject: {fileID: 4203583846868240313}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -231,4 +207,30 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
+--- !u!61 &8594229699722419909
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4203583846868240313}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.34223127, y: -0.7114086}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 12.4, y: 12.8}
+    newSize: {x: 12.4, y: 12.8}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 22.333565, y: 20.711163}
+  m_EdgeRadius: 0

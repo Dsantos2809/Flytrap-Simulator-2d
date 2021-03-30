@@ -147,9 +147,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   insect: 0
-  lane: {fileID: 0}
+  points: 30
+  digestionTime: 8
+  lane: {fileID: 4325326276071036323, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
   plant: {fileID: 5327946110370610909, guid: 09069e54a187a1046a1597bfbbc8e4c8, type: 3}
-  timeForKill: 3
+  timeForKill: 2
 --- !u!1 &3505304428913690604
 GameObject:
   m_ObjectHideFlags: 0
