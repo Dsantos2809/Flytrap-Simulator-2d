@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7817261609671841501}
   - component: {fileID: 4137956577669492374}
-  - component: {fileID: 6912719117577534803}
   - component: {fileID: 6419723138859061622}
+  - component: {fileID: 5532240075494207798}
   m_Layer: 0
   m_Name: Lane
   m_TagString: Untagged
@@ -84,24 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6912719117577534803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325326276071036323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a5be0a38126774e85274e7922be6d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFree: 1
-  insects:
-  - {fileID: 4203583846868240313, guid: 07629725f0921534d9c6f3064d04ab2e, type: 3}
-  - {fileID: 3169603749592162640, guid: 123beb87a5e9df344a4da99662022834, type: 3}
-  - {fileID: 9065467613704403859, guid: b6cb53daa484ecc4e89a0afb26333b13, type: 3}
-  - {fileID: 886052927489484861, guid: 2a3f276bddf7fb845814238f67212411, type: 3}
 --- !u!61 &6419723138859061622
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -128,3 +110,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.26, y: 3.52}
   m_EdgeRadius: 0
+--- !u!114 &5532240075494207798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4325326276071036323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a5be0a38126774e85274e7922be6d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFree: 1
+  isDead: 0
+  insects:
+  - {fileID: 4203583846868240313, guid: 07629725f0921534d9c6f3064d04ab2e, type: 3}
+  - {fileID: 3169603749592162640, guid: 123beb87a5e9df344a4da99662022834, type: 3}
+  - {fileID: 9065467613704403859, guid: b6cb53daa484ecc4e89a0afb26333b13, type: 3}
+  - {fileID: 886052927489484861, guid: 2a3f276bddf7fb845814238f67212411, type: 3}
+  insectsUnlocked: 4
+  lanesUnlocked: 3

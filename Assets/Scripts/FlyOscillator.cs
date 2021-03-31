@@ -33,7 +33,7 @@ public class FlyOscillator : MonoBehaviour
 
     void OnMouseEnter()
     {
-        if(gameObject.tag != "Dead")
+        if(gameObject.tag != "Dead" && Time.timeScale != 0 && !PlantAdmin.isEating)
         {
             mychildtransform.gameObject.SetActive(true);
             Transform nowPosition = transform;
@@ -57,15 +57,21 @@ public class FlyOscillator : MonoBehaviour
 
      void OnMouseOver()
     {
-        timeCounter += Time.deltaTime;
-        if (timeCounter >= timeForKill)
+        if (!PlantAdmin.isEating)
         {
-            gameObject.tag = "Dead";
+            timeCounter += Time.deltaTime;
+            Debug.Log(timeCounter);
+            if (timeCounter >= timeForKill)
+            {
+                gameObject.tag = "Dead";
+                PlantAdmin.isEating = true;
+            }
+            else
+            {
+                mychildtransform.localScale = Vector3.Lerp(startScale, newScale, timeCounter / timeForKill);
+            }
         }
-        else
-        {
-            mychildtransform.localScale = Vector3.Lerp(startScale, newScale, timeCounter / timeForKill);
-        }
+        
     }
     void Start()
     {
@@ -107,7 +113,7 @@ public class FlyOscillator : MonoBehaviour
         else
         {
             Vector3 pos = transform.position;
-            transform.position = pos + UnityEngine.Random.insideUnitSphere * 0.05f;
+            transform.position = pos + UnityEngine.Random.insideUnitSphere * 0.03f * Time.deltaTime;
         }
     }
 

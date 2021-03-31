@@ -10,6 +10,8 @@ public class PlantAdmin : MonoBehaviour
 
     public GameObject lane;
 
+    public static bool isEating = false;
+
     public float timeToEat = 5.0f;
 
     public int totalPoints = 0;
@@ -32,6 +34,7 @@ public class PlantAdmin : MonoBehaviour
             points = other.gameObject.GetComponent<FlyOscillator>().points;
             timeToDigest = other.gameObject.GetComponent<FlyOscillator>().digestionTime;
             statePlant = State.Eating;
+            isEating = true;
             totalPoints += points;
         }
     }
@@ -39,7 +42,7 @@ public class PlantAdmin : MonoBehaviour
     IEnumerator DestroyFly(Collider2D other)
     {
         Destroy(other.gameObject);
-        other.gameObject.GetComponent<FlyOscillator>().lane.GetComponent<Lane>().isDead = true;
+        other.gameObject.GetComponent<FlyOscillator>().lane.GetComponent<LaneScript>().isDead = true;
         yield return new WaitForSeconds(1.0f);
     }
 
@@ -60,9 +63,10 @@ public class PlantAdmin : MonoBehaviour
         }
     }
 
-    private void AttractFly()
+     void AttractFly()
     {
         lane.GetComponentInChildren<FlyOscillator>().gameObject.tag = "Dead";
+        isEating = true;
     }
 
     private void DigestFly()
@@ -70,6 +74,7 @@ public class PlantAdmin : MonoBehaviour
         t += Time.deltaTime;
         if (t / timeToDigest > 1)
         {
+            isEating = false;
             statePlant = State.Idle;
             t = 0.0f;
             timeIdle = 0.0f;

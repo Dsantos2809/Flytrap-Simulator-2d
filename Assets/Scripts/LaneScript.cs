@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lane : MonoBehaviour
+public class LaneScript : MonoBehaviour
 {
     public bool isFree = true;
     public bool isDead = false;
@@ -41,7 +41,6 @@ public class Lane : MonoBehaviour
     //Create a new enemy based on the percentage
     public void CreateNewEnemy()
     {
-        int insect;
         int percentage;
         percentage = Random.Range(1, insectsUnlocked);
 

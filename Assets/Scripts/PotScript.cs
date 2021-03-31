@@ -8,11 +8,6 @@ public class PotScript : MonoBehaviour
     public bool isOccupied;
     public bool isUnlocked;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
     public void CreateNewMouth()
     {
         if (!isOccupied)
