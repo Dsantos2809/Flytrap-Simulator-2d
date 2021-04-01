@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8816823805398910873}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 0.15, y: -0.42, z: 0}
+  m_LocalScale: {x: 1.3360752, y: 1.3217376, z: 1}
   m_Children: []
   m_Father: {fileID: 7771471689137008832}
   m_RootOrder: 0
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3241786074f1bf146885ce83595ddd94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7386700915862944157}
   - component: {fileID: 6584425765534875835}
   - component: {fileID: 4890182762332773261}
+  - component: {fileID: 7987356522751345280}
   m_Layer: 0
   m_Name: Mosquitoe
   m_TagString: Insect
@@ -110,8 +111,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9065467613704403859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.03225442, y: 0.038052063, z: 1}
+  m_LocalPosition: {x: -0.5293, y: -0.3779, z: 0}
+  m_LocalScale: {x: 0.23716813, y: 0.19934787, z: 1}
   m_Children:
   - {fileID: 1448372557333718649}
   m_Father: {fileID: 0}
@@ -157,9 +158,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 935721447e569d04397beb14a0905d54, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b0f01c83e02421542b6d04f32e0df6d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 12.4, y: 12.8}
@@ -200,18 +201,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.40308762, y: -0.15268707}
+  m_Offset: {x: 0.079556465, y: 0.1656233}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.4, y: 12.8}
+    oldSize: {x: 5.12, y: 5.12}
     newSize: {x: 12.4, y: 12.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 27.577866, y: 23.021496}
+  m_Size: {x: 6.50856, y: 6.01305}
   m_EdgeRadius: 0
 --- !u!50 &4890182762332773261
 Rigidbody2D:
@@ -234,3 +235,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &7987356522751345280
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065467613704403859}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 669a42c15ca9a9d47a2bf7de948335cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

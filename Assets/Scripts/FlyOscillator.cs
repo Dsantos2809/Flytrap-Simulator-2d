@@ -12,8 +12,6 @@ public class FlyOscillator : MonoBehaviour
     static Vector3 newScale = new Vector3(0.0f, 0.0f, 1.0f);
     Vector3 startScale;
 
-    float laneNumber;
-
     public int points;
     public float digestionTime;
 
@@ -60,7 +58,6 @@ public class FlyOscillator : MonoBehaviour
         if (!PlantAdmin.isEating)
         {
             timeCounter += Time.deltaTime;
-            Debug.Log(timeCounter);
             if (timeCounter >= timeForKill)
             {
                 gameObject.tag = "Dead";
@@ -69,6 +66,7 @@ public class FlyOscillator : MonoBehaviour
             else
             {
                 mychildtransform.localScale = Vector3.Lerp(startScale, newScale, timeCounter / timeForKill);
+                Debug.Log(timeCounter);
             }
         }
         
@@ -77,7 +75,6 @@ public class FlyOscillator : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         lane = transform.parent.gameObject;
-        laneNumber = lane.transform.position.y;
         PositionChange();
 
         mychildtransform = gameObject.transform.Find("Aura");
@@ -113,7 +110,7 @@ public class FlyOscillator : MonoBehaviour
         else
         {
             Vector3 pos = transform.position;
-            transform.position = pos + UnityEngine.Random.insideUnitSphere * 0.03f * Time.deltaTime;
+            transform.position = pos + UnityEngine.Random.insideUnitSphere * Time.deltaTime;
         }
     }
 
@@ -129,6 +126,11 @@ public class FlyOscillator : MonoBehaviour
             if (Vector2.Distance(transform.position, newPosition) < 1)
             {
                 PositionChange();
+                if (UnityEngine.Random.Range(-1.0f, 1.0f) > 0)
+                {
+                    sprite.flipX = !sprite.flipX;
+                }
+                sprite.flipX = !sprite.flipX;
             }
             transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * speed/2);
         }
@@ -147,7 +149,7 @@ public class FlyOscillator : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(Mathf.Lerp(min, max, t), laneNumber, 0);
+            transform.position = new Vector3(Mathf.Lerp(min, max, t), transform.position.y, 0);
             t += speed / 20 * Time.deltaTime;
             if (t > 1.0f)
             {
@@ -162,14 +164,16 @@ public class FlyOscillator : MonoBehaviour
 
     private void MoveTheBee()
     {
+        float y = 0;
         if (transform.position.x < -7)
         {
             transform.position += transform.right * speed * Time.deltaTime;
+            y = transform.position.y;
         }
         else
         {
             transform.position = new Vector3(Mathf.Lerp(min, max, t), transform.position.y, 0);
-            transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time, 2) + laneNumber-1, 0);
+            transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * speed/2, 2) + y, 0);
             t += speed / 10 * Time.deltaTime;
             if (t > 1.0f)
             {
@@ -190,7 +194,7 @@ public class FlyOscillator : MonoBehaviour
         }
         else
         {
-            transform.position = new Vector3(Mathf.Lerp(min, max, t), laneNumber, 0);
+            transform.position = new Vector3(Mathf.Lerp(min, max, t), transform.position.y, 0);
             t += speed / 10 * Time.deltaTime;
             if (t > 1.0f)
             {
@@ -205,7 +209,7 @@ public class FlyOscillator : MonoBehaviour
 
     private void FlyAttractor()
     {
-        transform.position = new Vector3(Mathf.Lerp(transform.position.x, plant.transform.position.x, tH), Mathf.Lerp(transform.position.y, plant.transform.position.y, tH), 0);
+        transform.position = new Vector3(Mathf.Lerp(transform.position.x, plant.transform.position.x, tH), Mathf.Lerp(transform.position.y, plant.transform.position.y + 1, tH), 0);
         tH += speed / 1000 * Time.deltaTime;
     }
 }

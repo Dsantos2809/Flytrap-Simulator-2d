@@ -4,47 +4,28 @@ using UnityEngine;
 
 public class LaneScript : MonoBehaviour
 {
-    public bool isFree = true;
-    public bool isDead = false;
-
     public GameObject[] insects;
 
+    private float nextActionTime = 0.0f;
+    public float period = 2.0f;
+
     public int insectsUnlocked = 4;
-
-    public int lanesUnlocked = 3;
-
-    void Start()
-    {
-        if (isFree)
-        {
-            CreateNewEnemy();
-            isDead = false;
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Insect")
-        {
-            isFree = false;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Dead")
-        {
-            isFree = true;
-        }
-    }
+    public int quantityUnlocked = 4;
+    public static int quantitySpawned = 0;
 
     //Create a new enemy based on the percentage
+    private void Start()
+    {
+        quantitySpawned = 0;
+    }
     public void CreateNewEnemy()
     {
         int percentage;
-        percentage = Random.Range(1, insectsUnlocked);
+        percentage = Random.Range(1, insectsUnlocked + 1);
+        Debug.Log("percentage: " + percentage);
+        quantitySpawned++;
 
-        GameObject childObject = Instantiate(insects[percentage - 1], new Vector3(transform.position.x - 10, transform.position.y, 0), Quaternion.identity);
+        GameObject childObject = Instantiate(insects[percentage - 1], new Vector3(transform.position.x - 10, Random.Range(-1, 5), 0), Quaternion.identity);
         childObject.transform.parent = transform;
         childObject.GetComponent<FlyOscillator>().insect = percentage;
         childObject.GetComponent<FlyOscillator>().speed = Random.Range(2.0f, 5.0f);
@@ -52,10 +33,16 @@ public class LaneScript : MonoBehaviour
 
     void Update()
     {
-        if (isDead)
-        {
-            CreateNewEnemy();
-            isDead = false;
+        if (quantityUnlocked > quantitySpawned)
+        {   
+            if (Time.time > nextActionTime)
+            {
+                nextActionTime = Time.time + period;
+                CreateNewEnemy();
+                Debug.Log("insects unlocked: " + quantityUnlocked);
+                Debug.Log("live insects: " + quantitySpawned);
+            }
         }
+
     }
 }
