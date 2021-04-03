@@ -5,23 +5,16 @@ using UnityEngine;
 public class PotScript : MonoBehaviour
 {
     public GameObject plant;
-    public bool isOccupied;
-    public bool isUnlocked;
+    public bool isOccupied = false;
+    public bool isUnlocked = false;
 
     public void CreateNewMouth()
     {
-        if (!isOccupied)
-        {
-            GameObject childObject = Instantiate(plant, new Vector3(transform.position.x, transform.position.y + 1, 0), Quaternion.identity);
-            childObject.transform.parent = transform;
-        }
+        plant.SetActive(true);
+        isOccupied = true;
     }
     void Update()
     {
-        if (transform.Find("Venus Flytrap"))
-        {
-            isOccupied = true;
-        }
-        else isOccupied = false;
+
     }
 }

@@ -183,8 +183,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   insect: 0
+  type: Fly
   points: 10
-  digestionTime: 5
+  animator: {fileID: 8124231058076116633}
+  digestionTime: 1
   lane: {fileID: 4325326276071036323, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
   plant: {fileID: 5327946110370610909, guid: 09069e54a187a1046a1597bfbbc8e4c8, type: 3}
   timeForKill: 2
@@ -222,7 +224,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2816682, y: -0.077415705}
+  m_Offset: {x: -0.44719768, y: 0.30649185}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -233,7 +235,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.2121124, y: 6.373115}
+  m_Size: {x: 9.9625435, y: 10.187265}
   m_EdgeRadius: 0
 --- !u!95 &8124231058076116633
 Animator:

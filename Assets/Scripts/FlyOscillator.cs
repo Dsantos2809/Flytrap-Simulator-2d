@@ -12,7 +12,11 @@ public class FlyOscillator : MonoBehaviour
     static Vector3 newScale = new Vector3(0.0f, 0.0f, 1.0f);
     Vector3 startScale;
 
+    public string type; 
+
     public int points;
+
+    public Animator animator;
     public float digestionTime;
 
     public GameObject lane;
@@ -26,6 +30,7 @@ public class FlyOscillator : MonoBehaviour
 
     Transform mychildtransform;
 
+    bool isStopped;
     float timeCounter = 0f;
     public float timeForKill;
 
@@ -35,18 +40,11 @@ public class FlyOscillator : MonoBehaviour
         {
             mychildtransform.gameObject.SetActive(true);
             Transform nowPosition = transform;
-            gameObject.tag = "Stopped";
-            StartCoroutine(ChangeTag());
+            isStopped = true;            
             transform.position = nowPosition.position;
+            Debug.Log("MouseEnter Working");
         }
     }
-
-    IEnumerator ChangeTag()
-    {
-        yield return new WaitForSeconds(0.1f);
-        gameObject.tag = "Insect";
-    }
-
 
     void OnMouseExit()
     {
@@ -61,15 +59,17 @@ public class FlyOscillator : MonoBehaviour
             if (timeCounter >= timeForKill)
             {
                 gameObject.tag = "Dead";
+                FindObjectOfType<AudioManager>().Volume(type, 0f);
                 PlantAdmin.isEating = true;
+                animator.SetBool("isDead", true);
             }
             else
             {
                 mychildtransform.localScale = Vector3.Lerp(startScale, newScale, timeCounter / timeForKill);
-                Debug.Log(timeCounter);
             }
         }
-        
+        Debug.Log("MouseOver Working");
+
     }
     void Start()
     {
@@ -83,12 +83,13 @@ public class FlyOscillator : MonoBehaviour
 
     void Update()
     {
-        if(gameObject.tag == "Dead")
+        if(gameObject.tag == "Dead" || gameObject.tag == "Attracted")
         {
             FlyAttractor();
         }
         else if(gameObject.tag == "Insect")
         {
+            FindObjectOfType<AudioManager>().Volume(type, 3f);
             switch (insect)
             {
                 case 1:
@@ -107,10 +108,11 @@ public class FlyOscillator : MonoBehaviour
                     throw new Exception();
             }
         }
-        else
+        if(isStopped)
         {
             Vector3 pos = transform.position;
             transform.position = pos + UnityEngine.Random.insideUnitSphere * Time.deltaTime;
+            isStopped = false;
         }
     }
 
@@ -210,6 +212,6 @@ public class FlyOscillator : MonoBehaviour
     private void FlyAttractor()
     {
         transform.position = new Vector3(Mathf.Lerp(transform.position.x, plant.transform.position.x, tH), Mathf.Lerp(transform.position.y, plant.transform.position.y + 1, tH), 0);
-        tH += speed / 1000 * Time.deltaTime;
+        tH += (speed/1000) * Time.deltaTime;
     }
 }

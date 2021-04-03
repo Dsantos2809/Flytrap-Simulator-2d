@@ -6,19 +6,20 @@ public class PotManager : MonoBehaviour
 {
     public GameObject[] pots;
 
-    void UnlockPot()
+    public void UnlockPot()
     {
         foreach(GameObject pot in pots)
         {
             if (!pot.GetComponent<PotScript>().isUnlocked)
             {
+                pot.SetActive(true);
                 pot.GetComponent<PotScript>().isUnlocked = true;
                 return;
             }
         }
     }
 
-    void CreatePlant()
+    public void CreatePlant()
     {
         foreach (GameObject pot in pots)
         {

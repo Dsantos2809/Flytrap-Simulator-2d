@@ -101,8 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   insect: 0
+  type: Beetle
   points: 100
-  digestionTime: 10
+  animator: {fileID: 558251594571597794}
+  digestionTime: 2
   lane: {fileID: 4325326276071036323, guid: c82f3d74850182644a5b356c1dff764c, type: 3}
   plant: {fileID: 5327946110370610909, guid: 09069e54a187a1046a1597bfbbc8e4c8, type: 3}
   timeForKill: 5
@@ -119,7 +121,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05921817, y: -0.11463034}
+  m_Offset: {x: -0.006206751, y: -0.66256523}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.7838893, y: 4.935851}
+  m_Size: {x: 7.222406, y: 8.004293}
   m_EdgeRadius: 0
 --- !u!50 &4500642632055241023
 Rigidbody2D:

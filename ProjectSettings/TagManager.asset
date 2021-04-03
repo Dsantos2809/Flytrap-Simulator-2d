@@ -8,6 +8,7 @@ TagManager:
   - Plant
   - Dead
   - Stopped
+  - Attracted
   layers:
   - Default
   - TransparentFX

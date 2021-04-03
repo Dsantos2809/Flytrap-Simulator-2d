@@ -73,7 +73,7 @@ public class MenuManagement : MonoBehaviour
     public void Menu()
     {
         Time.timeScale = 1f;
-        //SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Menu");
         Debug.Log("Going to Menu...");
     }
 

@@ -13,6 +13,7 @@ public class LaneScript : MonoBehaviour
     public int quantityUnlocked = 4;
     public static int quantitySpawned = 0;
 
+
     //Create a new enemy based on the percentage
     private void Start()
     {
@@ -22,9 +23,9 @@ public class LaneScript : MonoBehaviour
     {
         int percentage;
         percentage = Random.Range(1, insectsUnlocked + 1);
-        Debug.Log("percentage: " + percentage);
         quantitySpawned++;
 
+        
         GameObject childObject = Instantiate(insects[percentage - 1], new Vector3(transform.position.x - 10, Random.Range(-1, 5), 0), Quaternion.identity);
         childObject.transform.parent = transform;
         childObject.GetComponent<FlyOscillator>().insect = percentage;
@@ -39,8 +40,6 @@ public class LaneScript : MonoBehaviour
             {
                 nextActionTime = Time.time + period;
                 CreateNewEnemy();
-                Debug.Log("insects unlocked: " + quantityUnlocked);
-                Debug.Log("live insects: " + quantitySpawned);
             }
         }
 
