@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlantAdmin : MonoBehaviour
 {
-    public enum State { Eating, Attracting, Idle };
+    public enum State { Eating, Idle };
     public State statePlant;
 
     public Animator animator;
@@ -27,15 +27,13 @@ public class PlantAdmin : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Dead")
+        if (other.gameObject.tag == "Dead" )
         {
             StartCoroutine(DestroyFly(other));
             points = other.gameObject.GetComponent<FlyOscillator>().points;
-            Debug.Log(plantAddedTime);
             timeToDigest = other.gameObject.GetComponent<FlyOscillator>().digestionTime * plantAddedTime;
             statePlant = State.Eating;
             isEating = true;
-            totalPoints += points;
             animator.SetBool("IsEating", true);
             animator.SetInteger("Insect", other.gameObject.GetComponent<FlyOscillator>().insect);
             FindObjectOfType<AudioManager>().Play("Munch"); 
@@ -60,7 +58,6 @@ public class PlantAdmin : MonoBehaviour
     private void DigestFly()
     {
         t += Time.deltaTime;
-        Debug.Log(timeToDigest);
         animator.SetFloat("time", t / timeToDigest);
         if (t / timeToDigest > 1)
         {
@@ -68,6 +65,7 @@ public class PlantAdmin : MonoBehaviour
             statePlant = State.Idle;
             t = 0.0f;
             animator.SetBool("IsEating", false);
+            totalPoints += points;
         }
     }
 

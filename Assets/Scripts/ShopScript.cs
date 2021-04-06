@@ -19,8 +19,8 @@ public class ShopScript : MonoBehaviour
     public long currentPriceUnknown = 1000000000000;
 
 
-    int qtyPot = 0;
-    int qtyPitcher = 0;
+    int qtyPot = 1;
+    int qtyPitcher = 1;
     int qtyQty = 1;
     int qtyAcid = 1;
 
@@ -31,7 +31,9 @@ public class ShopScript : MonoBehaviour
     public Text txtAcid;
 
     public GameObject warning;
+    public GameObject warning2;
     public GameObject achivement;
+    public GameObject blockPanel;
 
     string[] insects = { "Bee", "Mosquito", "Beetle" };
     int insectIndex = 0;
@@ -75,34 +77,42 @@ public class ShopScript : MonoBehaviour
         }
         else
         {
-            SendWarning();
+            SendWarning(1);
         }
-        
+        if (qtyPot == 1) blockPanel.SetActive(false);
     }
 
     public void BuyPitcher()
     {
         if (currentPricePitcher <= points)
         {
-            if (qtyPitcher < maxPitchers)
+            if (qtyPitcher < qtyPot)
             {
-                CheckOut(currentPricePitcher);
-                qtyPitcher++;
-                potAdm.GetComponent<PotManager>().CreatePlant();
-                currentPricePitcher *= 2;
+                if (qtyPitcher < maxPitchers)
+                {
+                    CheckOut(currentPricePitcher);
+                    qtyPitcher++;
+                    potAdm.GetComponent<PotManager>().CreatePlant();
+                    currentPricePitcher *= 5;
 
-                pricePitcher.text = "Price: " + currentPricePitcher;
-                txtPitcher.text = qtyPitcher.ToString();
+                    pricePitcher.text = "Price: " + currentPricePitcher;
+                    txtPitcher.text = qtyPitcher.ToString();
+                }
+                else
+                {
+                    txtPitcher.text = "MAX";
+                    pricePitcher.text = "Price: MAX";
+                }
             }
             else
             {
-                txtPitcher.text = "MAX";
-                pricePitcher.text = "Price: MAX";
+                SendWarning(2);
             }
+
         }
         else
         {
-            SendWarning();
+            SendWarning(1);
         }
     }
 
@@ -130,7 +140,7 @@ public class ShopScript : MonoBehaviour
         }
         else
         {
-                SendWarning();
+                SendWarning(1);
         }
     }
 
@@ -156,7 +166,7 @@ public class ShopScript : MonoBehaviour
         }
         else
         {
-            SendWarning();
+            SendWarning(1);
         }
     }
 
@@ -182,7 +192,7 @@ public class ShopScript : MonoBehaviour
         }
         else
         {
-            SendWarning();
+            SendWarning(1);
         }
     }
 
@@ -194,7 +204,7 @@ public class ShopScript : MonoBehaviour
         }
         else
         {
-            SendWarning();
+            SendWarning(1);
         }
     }
 
@@ -203,9 +213,17 @@ public class ShopScript : MonoBehaviour
         achivement.SetActive(true);
     }
 
-    void SendWarning()
+    void SendWarning(int number)
     {
-        warning.SetActive(true);    
+        if(number == 1)
+        {
+            warning.SetActive(true);
+        }
+        else if(number == 2)
+        {
+            warning2.SetActive(true);
+        }
+        
     }
 
     void CheckOut(int cost)
@@ -221,13 +239,13 @@ public class ShopScript : MonoBehaviour
     {
         points = plant.GetComponent<PlantAdmin>().totalPoints;
 
-        if (warning.activeSelf || achivement.activeSelf)
+        if (warning.activeSelf || achivement.activeSelf || warning2.activeSelf)
         {
             t += Time.unscaledDeltaTime;
-            Debug.Log(t);
             if (t > 1.5f) {
                 warning.SetActive(false);
                 achivement.SetActive(false);
+                warning2.SetActive(false);
                 t = 0f;
             } 
         }

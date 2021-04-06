@@ -30,7 +30,6 @@ public class FlyOscillator : MonoBehaviour
 
     Transform mychildtransform;
 
-    bool isStopped;
     float timeCounter = 0f;
     public float timeForKill;
 
@@ -39,10 +38,6 @@ public class FlyOscillator : MonoBehaviour
         if(gameObject.tag != "Dead" && Time.timeScale != 0 && !PlantAdmin.isEating)
         {
             mychildtransform.gameObject.SetActive(true);
-            Transform nowPosition = transform;
-            isStopped = true;            
-            transform.position = nowPosition.position;
-            Debug.Log("MouseEnter Working");
         }
     }
 
@@ -60,7 +55,6 @@ public class FlyOscillator : MonoBehaviour
             {
                 gameObject.tag = "Dead";
                 FindObjectOfType<AudioManager>().Volume(type, 0f);
-                PlantAdmin.isEating = true;
                 animator.SetBool("isDead", true);
             }
             else
@@ -68,8 +62,6 @@ public class FlyOscillator : MonoBehaviour
                 mychildtransform.localScale = Vector3.Lerp(startScale, newScale, timeCounter / timeForKill);
             }
         }
-        Debug.Log("MouseOver Working");
-
     }
     void Start()
     {
@@ -107,12 +99,6 @@ public class FlyOscillator : MonoBehaviour
                 default:
                     throw new Exception();
             }
-        }
-        if(isStopped)
-        {
-            Vector3 pos = transform.position;
-            transform.position = pos + UnityEngine.Random.insideUnitSphere * Time.deltaTime;
-            isStopped = false;
         }
     }
 
@@ -211,7 +197,11 @@ public class FlyOscillator : MonoBehaviour
 
     private void FlyAttractor()
     {
-        transform.position = new Vector3(Mathf.Lerp(transform.position.x, plant.transform.position.x, tH), Mathf.Lerp(transform.position.y, plant.transform.position.y + 1, tH), 0);
-        tH += (speed/1000) * Time.deltaTime;
+        if(Time.timeScale > 0)
+        {
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, plant.transform.position.x, tH), Mathf.Lerp(transform.position.y, plant.transform.position.y + 1, tH), 0);
+            tH += (speed / 1000) * Time.deltaTime;
+            
+        }
     }
 }

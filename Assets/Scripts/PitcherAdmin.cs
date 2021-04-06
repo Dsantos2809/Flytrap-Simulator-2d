@@ -22,19 +22,21 @@ public class PitcherAdmin : MonoBehaviour
     float t;
     float timeIdle;
 
+    bool oneTime = false;
+
     void Start()
     {
-        pitcher = Pitcher.Idle;
-        timeIdle = 0.0f;
+
     }
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Attracted" && pitcher != Pitcher.Eating)
+        if (other.gameObject.tag == "Attracted")
         {
             StartCoroutine(DestroyFly(other));
             points = other.gameObject.GetComponent<FlyOscillator>().points;
-            timeToDigest = other.gameObject.GetComponent<FlyOscillator>().digestionTime + plantAddedTime;
+            timeToDigest = other.gameObject.GetComponent<FlyOscillator>().digestionTime * plantAddedTime;
+            pitcher = Pitcher.Eating;
             totalPoints += points;
             mainPlant.GetComponent<PlantAdmin>().totalPoints += totalPoints;
             animator.SetBool("isEating", true);
@@ -54,37 +56,39 @@ public class PitcherAdmin : MonoBehaviour
         {
             AttractFly();
         }
-        else if (pitcher == Pitcher.Eating)
+        if (pitcher == Pitcher.Eating)
         {
             DigestFly();
         }
-        else
+        if(pitcher == Pitcher.Idle)
         {
             timeIdle += Time.deltaTime;
             if(timeIdle > 15.0f)
             {
-                pitcher = Pitcher.Attracting;            
+                pitcher = Pitcher.Attracting;
+                oneTime = false;
             }
         }
     }
 
     void AttractFly()
     {
-        enemiesList = GameObject.FindGameObjectsWithTag("Insect");
-        if(enemiesList.Length > 0)
+        if (!oneTime)
         {
-            enemiesList[0].GetComponent<FlyOscillator>().plant = gameObject;
-            enemiesList[0].tag = "Attracted";
-            LaneScript.quantitySpawned--;
-            pitcher = Pitcher.Eating;
-            Debug.Log(pitcher);
+            oneTime = true;
+            enemiesList = GameObject.FindGameObjectsWithTag("Insect");
+            int insect = UnityEngine.Random.Range(0, enemiesList.Length);
+            if (enemiesList.Length > 0)
+            {
+                enemiesList[insect].GetComponent<FlyOscillator>().plant = gameObject;
+                enemiesList[insect].tag = "Attracted";
+            }
         }
     }
 
     private void DigestFly()
     {
         t += Time.deltaTime;
-        animator.SetFloat("time", t / timeToDigest);
         if (t / timeToDigest > 1)
         {
             pitcher = Pitcher.Idle;
